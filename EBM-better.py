@@ -31,7 +31,7 @@ class EBM(nn.Module):
     def forward(self,x,y,reduction="avg"):
         f_xy = self.energy_net(x)
         L_clf = self.class_loss(f_xy,y)
-        L_gen = self.gen_loss(x.f_xy)
+        L_gen = self.gen_loss(x,f_xy)
 
         if reduction == "sum":
             loss = (L_clf + L_gen).sum()
